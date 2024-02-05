@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const listarProdutosRadio = document.getElementById('listar-produtos');
     const cadastrarProdutosRadio = document.getElementById('cadastrar-produtos');
+    const formCadastroProduto = document.getElementById('form-cadastro-produtos');
     const removerProdutosRadio = document.getElementById('remover-produtos');
 
     listarProdutosRadio.addEventListener('change', () => {
@@ -58,11 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function cadastrarProdutos() {
+        formCadastroProduto.style.display = 'block';
         console.log('Cadastrar Produtos - Implemente sua lógica aqui');
     }
 
     function removerProdutos() {
-        console.log('Remover Produtos - Implemente sua lógica aqui');
-    }
+        console.log('Remover Produtos - Implemente sua lógica aqui');}
 
 });
