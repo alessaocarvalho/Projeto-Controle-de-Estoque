@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script.js"></script>
     <title>Controle de Estoque</title>
 </head>
+
 <body>
     <h1>Controle de Estoque</h1>
-    <input type="radio" id="produtos" name="secao-produtos" checked>
+    <input type="radio" id="produtos" name="secao" checked>
     <label>Produtos</label>
-    <input type="radio" id="pedidos" name="secao-pedidos">
+    <input type="radio" id="pedidos" name="secao">
     <label>Pedidos</label>
-    <input type="radio" id="fornecedores" name="secao-fornecedores">
+    <input type="radio" id="fornecedores" name="secao">
     <label>Fornecedores</label>
-    <input type="radio" id="contabilidade" name="secao-contabilidade">
+    <input type="radio" id="contabilidade" name="secao">
     <label>Contabilidade</label>
+
+    <div id="secao-produtos" style="display: none;">
+        <h2>Produtos</h2>
+        <p>Você verá os produtos aqui</p>
+    </div>
+
+    <div id="secao-pedidos" style="display: none;">
+        <h2>Pedidos</h2>
+        <p>Você verá os pedidos aqui</p>
+    </div>
+
+    <div id="secao-fornecedores" style="display: none;">
+        <h2>Fornecedores</h2>
+        <p>Você verá os fornecedores aqui</p>
+    </div>
+
+    <div id="secao-contabilidade" style="display: none;">
+        <h2>Contabilidade</h2>
+        <p>Você verá a contabilidade aqui</p>
+    </div>
 </body>
+
 </html>
