@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     // Captura os radio buttons
     const produtosRadio = document.getElementById('produtos');
     const pedidosRadio = document.getElementById('pedidos');
@@ -36,4 +36,33 @@ document.addEventListener('DOMContentLoaded', function() {
             secaoSelecionada.style.display = 'block';
         }
     }
+    
+    const listarProdutosRadio = document.getElementById('listar-produtos');
+    const cadastrarProdutosRadio = document.getElementById('cadastrar-produtos');
+    const removerProdutosRadio = document.getElementById('remover-produtos');
+
+    listarProdutosRadio.addEventListener('change', () => {
+        listarProdutos();
+    });
+
+    cadastrarProdutosRadio.addEventListener('change', () => {
+        cadastrarProdutos();
+    });
+
+    removerProdutosRadio.addEventListener('change', () => {
+        removerProdutos();
+    });
+
+    function listarProdutos() {
+        console.log('Listar Produtos - Implemente sua lógica aqui');
+    }
+
+    function cadastrarProdutos() {
+        console.log('Cadastrar Produtos - Implemente sua lógica aqui');
+    }
+
+    function removerProdutos() {
+        console.log('Remover Produtos - Implemente sua lógica aqui');
+    }
+
 });
