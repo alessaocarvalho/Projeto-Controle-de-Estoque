@@ -5,3 +5,7 @@ export function criarProduto(nome, preco, quantidade) {
         quantidade: quantidade
     };
 };
+
+export function listarProdutosEstoque() {
+    return JSON.parse(localStorage.getItem('produtos')) || [];
+};

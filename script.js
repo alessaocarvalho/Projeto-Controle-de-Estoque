@@ -1,5 +1,6 @@
 
 import { criarProduto } from "./objects/produtos.js";
+import { listarProdutosEstoque } from "./objects/produtos.js";
 import { initLocalStorage } from "./localStorage.js";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,12 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function listarProdutos() {
         secaoListarProdutos.style.display = 'block';
-        console.log('Listar Produtos - Implemente sua lógica aqui');
+        listarEstoqueProdutos();
     }
 
     function cadastrarProdutos() {
         secaoCadastroProdutos.style.display = 'block';
-        console.log('Cadastrar Produtos - Implemente sua lógica aqui');
     }
 
     const formCadastroProdutos = document.getElementById('form-cadastro-produtos');
@@ -87,5 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const produtosArmazenados = localStorage.getItem('produtos');
     console.log(produtosArmazenados);
 
-
 });
+
+export function listarEstoqueProdutos() {
+    const produtos = listarProdutosEstoque();
+
+    const listaProdutosHTML = produtos.map(produto => {
+        return `<li>${produto.nome} - R$ ${produto.preco} - Quantidade: ${produto.quantidade}</li>`;
+    }).join('');
+
+    const listaProdutos = document.getElementById('lista-produtos');
+    listaProdutos.innerHTML = listaProdutosHTML;
+};
