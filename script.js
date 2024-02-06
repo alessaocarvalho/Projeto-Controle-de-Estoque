@@ -1,3 +1,7 @@
+
+import { criarProduto } from "./objects/produtos.js";
+import { initLocalStorage } from "./localStorage.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const produtosRadio = document.getElementById('produtos');
@@ -64,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nomeProduto = document.getElementById('nome-produto').value;
         const precoProduto = parseFloat(document.getElementById('preco-produto').value);
         const quantidadeProduto = parseFloat(document.getElementById('quantidade-produto').value);
+        const novoProduto = criarProduto(nomeProduto, precoProduto, quantidadeProduto);
 
         console.log('Nome: ', nomeProduto);
         console.log('Preço: ', precoProduto);
@@ -72,4 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('form-cadastro-produtos').reset();
     })
 
+    initLocalStorage();
+    
 });
