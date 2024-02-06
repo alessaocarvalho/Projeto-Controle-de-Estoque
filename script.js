@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Captura os radio buttons
+
     const produtosRadio = document.getElementById('produtos');
     const pedidosRadio = document.getElementById('pedidos');
     const fornecedoresRadio = document.getElementById('fornecedores');
     const contabilidadeRadio = document.getElementById('contabilidade');
 
-    // Adiciona evento de mudança para cada radio button
     produtosRadio.addEventListener('change', () => {
         toggleSection('produtos');
     });
@@ -22,48 +21,55 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleSection('contabilidade');
     });
 
-    // Função para ocultar todas as seções e mostrar apenas a seção selecionada
     function toggleSection(secaoId) {
-        // Oculta todas as seções
+
         const secoes = document.querySelectorAll('[id^="secao"]');
-        secoes.forEach(function(secao) {
+        secoes.forEach(function (secao) {
             secao.style.display = 'none';
         });
 
-        // Mostra a seção correspondente ao radio button selecionado
         const secaoSelecionada = document.getElementById('secao-' + secaoId);
         if (secaoSelecionada) {
             secaoSelecionada.style.display = 'block';
         }
     }
-    
-    const listarProdutosRadio = document.getElementById('listar-produtos');
-    const cadastrarProdutosRadio = document.getElementById('cadastrar-produtos');
-    const formCadastroProduto = document.getElementById('form-cadastro-produtos');
-    const removerProdutosRadio = document.getElementById('remover-produtos');
 
-    listarProdutosRadio.addEventListener('change', () => {
+    const listarProdutosDetails = document.getElementById('listar-produtos');
+    const cadastrarProdutosDetails = document.getElementById('cadastrar-produtos');
+    const secaoListarProdutos = document.getElementById('secao-listar-produtos');
+    const secaoCadastroProdutos = document.getElementById('secao-cadastro-produtos');
+
+    listarProdutosDetails.addEventListener('click', () => {
         listarProdutos();
     });
 
-    cadastrarProdutosRadio.addEventListener('change', () => {
+    cadastrarProdutosDetails.addEventListener('click', () => {
         cadastrarProdutos();
     });
 
-    removerProdutosRadio.addEventListener('change', () => {
-        removerProdutos();
-    });
-
     function listarProdutos() {
+        secaoListarProdutos.style.display = 'block';
         console.log('Listar Produtos - Implemente sua lógica aqui');
     }
 
     function cadastrarProdutos() {
-        formCadastroProduto.style.display = 'block';
+        secaoCadastroProdutos.style.display = 'block';
         console.log('Cadastrar Produtos - Implemente sua lógica aqui');
     }
 
-    function removerProdutos() {
-        console.log('Remover Produtos - Implemente sua lógica aqui');}
+    const formCadastroProdutos = document.getElementById('form-cadastro-produtos');
+    formCadastroProdutos.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const nomeProduto = document.getElementById('nome-produto').value;
+        const precoProduto = parseFloat(document.getElementById('preco-produto').value);
+        const quantidadeProduto = parseFloat(document.getElementById('quantidade-produto').value);
+
+        console.log('Nome: ', nomeProduto);
+        console.log('Preço: ', precoProduto);
+        console.log('Quantidade: ', quantidadeProduto);
+
+        document.getElementById('form-cadastro-produtos').reset();
+    })
 
 });
