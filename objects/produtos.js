@@ -1,4 +1,4 @@
-export function criarProduto() {
+export function criarProduto(nome, preco, quantidade) {
     return {
         nome: nome,
         preco: preco,
