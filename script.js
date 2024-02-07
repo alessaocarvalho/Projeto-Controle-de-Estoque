@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const secaoSelecionada = document.getElementById('secao-' + secaoId);
         if (secaoSelecionada) {
             secaoSelecionada.style.display = 'block';
-        }
-    }
+        };
+    };
 
     const listarProdutosDetails = document.getElementById('listar-produtos');
     const cadastrarProdutoDetails = document.getElementById('cadastrar-produtos');

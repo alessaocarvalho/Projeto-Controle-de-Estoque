@@ -26,9 +26,9 @@ formCadastroProdutos.addEventListener('submit', (event) => {
     console.log('Preço: ', precoProduto);
     console.log('Quantidade: ', quantidadeProduto);
 
-    const produtosStorage = JSON.parse(localStorage.getItem('produtos')) || [];
-    produtosStorage.push(novoProduto);
-    localStorage.setItem('produtos', JSON.stringify(produtosStorage));
+    const produtoStorage = JSON.parse(localStorage.getItem('produtos')) || [];
+    produtoStorage.push(novoProduto);
+    localStorage.setItem('produtos', JSON.stringify(produtoStorage));
 
     document.getElementById('form-cadastro-produtos').reset();
 });
