@@ -1,4 +1,5 @@
 import { cadastrarProduto } from "./cadastrarProduto.js";
+import { listarProdutos } from "./listarProdutos.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -39,9 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const listarProdutosDetails = document.getElementById('listar-produtos');
     const cadastrarProdutoDetails = document.getElementById('cadastrar-produtos');
     const secaoCadastroProdutos = document.getElementById('secao-cadastro-produtos');
+    const secaoListarProdutos = document.getElementById('secao-listar-produtos');
 
     listarProdutosDetails.addEventListener('click', () => {
         listarProdutos();
+        secaoListarProdutos.style.display = 'block';
     });
 
     cadastrarProdutoDetails.addEventListener('click', () => {

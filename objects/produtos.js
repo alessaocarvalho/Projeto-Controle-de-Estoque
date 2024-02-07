@@ -6,6 +6,6 @@ export function criarProduto(nome, preco, quantidade) {
     };
 };
 
-export function listarProdutosEstoque() {
+export function exibirProduto() {
     return JSON.parse(localStorage.getItem('produtos')) || [];
 };

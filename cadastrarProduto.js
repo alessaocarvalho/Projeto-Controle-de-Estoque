@@ -31,7 +31,7 @@ formCadastroProdutos.addEventListener('submit', (event) => {
     localStorage.setItem('produtos', JSON.stringify(produtosStorage));
 
     document.getElementById('form-cadastro-produtos').reset();
-})
+});
 
 initLocalStorage();
 
