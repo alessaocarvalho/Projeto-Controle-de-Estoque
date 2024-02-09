@@ -1,39 +1,34 @@
-import { initLocalStorage } from "./localStorage.js";
 import { criarProduto } from "./objects/produtos.js";
+import { listarProdutos } from "./listarProdutos.js";
+import { initLocalStorage } from "./localStorage.js";
 
 export function cadastrarProduto() {
-    const nomeProduto = document.getElementById('nome-produto').value;
-    const precoProduto = parseFloat(document.getElementById('preco-produto').value);
-    const quantidadeProduto = parseFloat(document.getElementById('quantidade-produto').value);
+    try {
+        const nomeProduto = document.querySelector('#nome-produto').value;
+        const precoProduto = parseFloat(document.querySelector('#preco-produto').value);
+        const quantidadeProduto = parseFloat(document.querySelector('#quantidade-produto').value);
 
-    console.log('Nome: ', nomeProduto);
-    console.log('Preço: ', precoProduto);
-    console.log('Quantidade: ', quantidadeProduto);
+        if (!nomeProduto || precoProduto <= 0, isNaN(precoProduto) || quantidadeProduto <= 0, isNaN(quantidadeProduto)) {
+            console.error('Os dados do produto são inválidos.');
+            return;
+        }
 
-}
+        const novoProduto = criarProduto(nomeProduto, precoProduto, quantidadeProduto);
 
-const formCadastroProdutos = document.getElementById('form-cadastro-produtos');
-formCadastroProdutos.addEventListener('submit', (event) => {
-    event.preventDefault();
+        const produtosArmazenados = JSON.parse(localStorage.getItem('produtos')) || [];
 
-    const nomeProduto = document.getElementById('nome-produto').value;
-    const precoProduto = parseFloat(document.getElementById('preco-produto').value);
-    const quantidadeProduto = parseFloat(document.getElementById('quantidade-produto').value);
+        produtosArmazenados.push(novoProduto);
 
-    const novoProduto = criarProduto(nomeProduto, precoProduto, quantidadeProduto);
+        localStorage.setItem('produtos', JSON.stringify(produtosArmazenados));
 
-    console.log('Nome: ', nomeProduto);
-    console.log('Preço: ', precoProduto);
-    console.log('Quantidade: ', quantidadeProduto);
+        listarProdutos(produtosArmazenados);
 
-    const produtoStorage = JSON.parse(localStorage.getItem('produtos')) || [];
-    produtoStorage.push(novoProduto);
-    localStorage.setItem('produtos', JSON.stringify(produtoStorage));
+        document.getElementById('form-cadastro-produtos').reset();
 
-    document.getElementById('form-cadastro-produtos').reset();
-});
+        console.log('Produto cadastrado com sucesso:', novoProduto);
+    } catch (error) {
+        console.error('Ocorreu um erro ao cadastrar o produto:', error);
+    }
+};
 
 initLocalStorage();
-
-const produtosArmazenados = localStorage.getItem('produtos');
-console.log(produtosArmazenados);

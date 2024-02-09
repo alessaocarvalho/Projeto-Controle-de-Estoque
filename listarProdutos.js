@@ -6,7 +6,7 @@ export function listarProdutos() {
     const listaProdutosHTML = produtos.map(produto => {
         return `<li id="produto-${produto.id}">Produto: ${produto.nome}<br>R$: ${produto.preco}<br>Quantidade em Estoque: ${produto.quantidade}
         <div class="opcoes">
-                    <button class="editar">Editar</button>
+                    <button class="editar" data-id="${produto.id}">Editar</button>
                     <button class="remover" data-id="${produto.id}">Remover</button>
                 </div>
         </li>`;
@@ -14,6 +14,14 @@ export function listarProdutos() {
 
     const listaProdutos = document.getElementById('lista-produtos');
     listaProdutos.innerHTML = listaProdutosHTML;
+
+    const editarBtn = document.querySelectorAll('.editar');
+    editarBtn.forEach(botao => {
+        botao.addEventListener('click', () => {
+            const idProduto = parseInt(botao.getAttribute('data-id'));
+            editarProduto(idProduto);
+        });
+    });
 
     const removerBtn = document.querySelectorAll('.remover');
     removerBtn.forEach(botao => {

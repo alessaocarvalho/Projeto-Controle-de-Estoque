@@ -3,10 +3,10 @@ import { listarProdutos } from "./listarProdutos.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const produtosRadio = document.getElementById('produtos');
-    const pedidosRadio = document.getElementById('pedidos');
-    const fornecedoresRadio = document.getElementById('fornecedores');
-    const contabilidadeRadio = document.getElementById('contabilidade');
+    const produtosRadio = document.querySelector('#produtos');
+    const pedidosRadio = document.querySelector('#pedidos');
+    const fornecedoresRadio = document.querySelector('#fornecedores');
+    const contabilidadeRadio = document.querySelector('#contabilidade');
 
     produtosRadio.addEventListener('change', () => {
         toggleSection('produtos');
@@ -31,16 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
             secao.style.display = 'none';
         });
 
-        const secaoSelecionada = document.getElementById('secao-' + secaoId);
+        const secaoSelecionada = document.querySelector('#secao-' + secaoId);
         if (secaoSelecionada) {
             secaoSelecionada.style.display = 'block';
         };
     };
 
-    const listarProdutosDetails = document.getElementById('listar-produtos');
-    const cadastrarProdutoDetails = document.getElementById('cadastrar-produtos');
-    const secaoCadastroProdutos = document.getElementById('secao-cadastro-produtos');
-    const secaoListarProdutos = document.getElementById('secao-listar-produtos');
+    const listarProdutosDetails = document.querySelector('#listar-produtos');
+    const cadastrarProdutoDetails = document.querySelector('#cadastrar-produtos');
+    const secaoCadastroProdutos = document.querySelector('#secao-cadastro-produtos');
+    const secaoListarProdutos = document.querySelector('#secao-listar-produtos');
+    const formCadastro = document.querySelector('#form-cadastro-produtos');
 
     listarProdutosDetails.addEventListener('click', () => {
         listarProdutos();
@@ -48,7 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     cadastrarProdutoDetails.addEventListener('click', () => {
-        cadastrarProduto();
         secaoCadastroProdutos.style.display = 'block';
     });
+
+    formCadastro.addEventListener('submit', (event) => {
+        cadastrarProduto();
+        event.preventDefault();
+    })
 });
