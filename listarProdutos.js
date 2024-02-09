@@ -12,7 +12,7 @@ export function listarProdutos() {
         </li>`;
     }).join('');
 
-    const listaProdutos = document.getElementById('lista-produtos');
+    const listaProdutos = document.querySelector('#lista-produtos');
     listaProdutos.innerHTML = listaProdutosHTML;
 
     const editarBtn = document.querySelectorAll('.editar');
@@ -31,10 +31,16 @@ export function listarProdutos() {
         });
     });
 
+
+    function editarProduto(idProduto) {
+
+    };
+
     function removerProduto(idProduto) {
         let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
         produtos = produtos.filter(produto => produto.id !== idProduto);
         localStorage.setItem('produtos', JSON.stringify(produtos));
         listarProdutos();
-    }
+    };
+
 };
